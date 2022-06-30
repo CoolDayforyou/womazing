@@ -1,0 +1,58 @@
+@import "../../styles/__mixins.scss";
+
+.card {
+	width: 350px;
+	&Img {
+		height: 478px;
+		opacity: 1;
+		position: relative;
+		background: #6E9C9F;
+
+			&Link {
+				position: absolute;
+				color: #fff;
+				opacity: 0;
+				top: 50%;
+				left: 50%;
+				transform: translateX(-50%);
+		}
+		
+		&:hover {
+			.model {
+				cursor: pointer;
+				opacity: .64;
+				transition: opacity .3s ease;
+			}
+			.cardImgLink {
+			opacity: 1;
+			cursor: pointer;
+			}
+		}
+	}
+
+
+	&Info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 24px;
+		
+		h4 {
+		 @include _h4;
+		}
+	}
+	
+	&Price {
+		display: flex;
+		margin-top: 7px;
+		@include _cardPrice;
+		color: #998E78;
+	}
+	
+	.oldPrice {
+		text-decoration: line-through;
+		color: #9C9C9C;
+		margin-right: 10px;
+	}
+}
+

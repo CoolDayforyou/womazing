@@ -1,0 +1,26 @@
+@import "../../styles/__mixins.scss";
+
+.description {
+	margin: 190px 0 214px;
+}
+.itemDescription {
+	margin: 110px 0 102px;
+}
+.description,
+.itemDescription {
+	h1 {
+		@include _h1;
+		margin-bottom: 26px;
+	}
+	a {
+		cursor: pointer;
+		&:last-child {
+			color: #909090;
+		}
+		&:not(:last-child):after {
+			cursor: auto;
+				content: "\2014";
+			
+		}
+	}
+}

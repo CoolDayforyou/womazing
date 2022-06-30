@@ -1,0 +1,127 @@
+@import "../../styles/_mixins.scss";
+
+.bg {
+	position: absolute;
+	width: 673px;
+	height: 826px;
+	right: -210px;
+	top: -121px;
+	z-index: -1;
+	background: #F1EADC;
+}
+
+.slider {
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 190px;
+}
+
+.left-side {
+	width: 563px;
+	align-self: flex-end;
+	.swiper-pagination {
+		position: relative;
+		margin-top: 100px;
+		bottom: 0;
+	
+		&-bullet {
+			width: 30px;
+			height: 4px;
+			border-radius: 0;
+			font-size: 1px;
+			opacity: 1;
+			background: rgba(0, 0, 0, 0.2);
+	
+			&-active {
+				background: #000;
+			}
+		}
+	}
+}
+
+.left-swiper{
+
+	&__nav {
+		position: relative;
+		margin-top: 50px;
+		display: flex;
+		
+		button, img {
+			cursor: pointer;
+		}
+	}
+
+	&__item{
+		width: 100%;
+	
+		h1 {
+			@include _h1;
+		}
+	
+		p {
+			margin-top: 45px;
+			margin-left: 15px;
+			@include _largeText;
+			width: 385px;
+			text-align: end;
+		}
+	}
+
+	&__arrow {
+		width: 67px;
+		height: 67px;
+		margin-left: 90px;
+		background: rgba($_firstColor, 0.1);
+	}
+
+	&__button {
+		@include darkButton;
+	}
+	
+}
+
+
+
+.right-side {
+	position: relative;
+	margin-right: 0;
+	display: block;
+
+	&__photos {
+		width: 410px;
+		position: absolute;
+		top: 0;
+		align-items: start;
+		justify-content: flex-end;
+		display: flex;
+		flex-direction: column;
+		z-index: 5;
+		right: 0;
+
+		img {
+			&:first-child {
+				position: relative;
+				margin-top: 123px;
+				margin-right: -98px;
+				align-self: end;
+				top: 0;
+			}
+
+			&:last-child {
+				position: relative;
+				margin-top: 68px;
+				right:0;
+				margin-left: -130px;
+				top: 0;
+			}
+		}
+	}
+
+	.swiper {
+		width: 410px;
+		height: 646px;
+	}
+}
+

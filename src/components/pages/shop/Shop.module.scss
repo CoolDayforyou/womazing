@@ -1,0 +1,29 @@
+@import "../../../styles/_mixins";
+
+.shop {
+
+	.catalogBtn {
+		@include blackButton;
+		
+	}
+	.active {
+		color: #fff;
+	background-color:#000;
+	}
+	.catalog {
+		margin-bottom: 92px;
+		button:not(:last-child) {
+			margin-right: 10px;
+		}
+	}
+	p {
+		margin-bottom: 65px;
+		color: #808080;
+	}
+	.cards {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 65px;
+		flex-wrap: wrap;
+	}
+}

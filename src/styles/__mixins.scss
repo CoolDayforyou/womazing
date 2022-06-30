@@ -1,0 +1,97 @@
+$_firstColor: #6E9C9F;
+$_secondColor: #998E78;
+
+@mixin _h1 {
+	font-weight: 500;
+	font-size: 55px;
+	line-height: 110%;
+	letter-spacing: 0.02em;
+}
+@mixin _h2 {
+	font-weight: 500;
+	font-size: 40px;
+	line-height: 110%;
+	letter-spacing: 0.02em;
+}
+@mixin _h3 {
+	font-weight: 500;
+	font-size: 25px;
+	line-height: 140%;
+	letter-spacing: 0.02em;
+}
+@mixin _h4 {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 140%;
+	letter-spacing: 0.02em;
+}
+
+@mixin _largeText {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 140%;
+	letter-spacing: 0.02em;
+}
+@mixin _cardPrice {
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 140%;
+	letter-spacing: 0.02em;
+}
+@mixin _normalText {
+	font-weight: 500;
+	font-size: 17px;
+	line-height: 140%;
+	letter-spacing: 0.02em;
+}
+
+@mixin liteButton {
+	padding: 22px 50px;
+	align-self: center;
+	align-items: center;
+	border: 1px solid $_firstColor;
+	background-color: inherit;
+	color: $_firstColor;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 138.9%;
+	&:hover {
+		color: #fff;
+		background-color: $_firstColor;
+		cursor: pointer;
+		transition: background-color .3s ease, color .3s ease;
+	}
+}
+
+@mixin darkButton {
+	padding: 22px 50px;
+	background-color: $_firstColor;
+	color: #fff;
+	font-weight: 400;
+	font-size: 17px;
+	text-align: center;
+	&:hover {
+		color: #fff;
+		background-color: #509498;
+		cursor: pointer;
+		transition: background-color .3s ease;
+	}
+}
+
+@mixin blackButton {
+	padding:19px 65px;
+	align-self: center;
+	align-items: center;
+	border: 1px solid #000;
+	background-color: inherit;
+	color:#000;
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 138.9%;
+	&:hover {
+		color: #fff;
+		background-color:#000;
+		cursor: pointer;
+		transition: background-color .3s ease, color .3s ease;
+	}
+}
