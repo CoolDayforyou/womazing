@@ -17,6 +17,10 @@ footer {
 			color: inherit;
 			&:hover {
 				color: $_firstColor;
+				text-decoration: underline;
+				text-underline-offset: 5px;
+				text-decoration-color: #CEDEDF;
+				
 			}
 			&:visited {
 				color: inherit;

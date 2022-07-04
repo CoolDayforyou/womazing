@@ -1,121 +1,40 @@
 import React, { useContext, useEffect, useState } from "react"
+import ReactPaginate from 'react-paginate'
 
 import AppContext from "../../../context"
 import Card from "../../card/Card"
 import Description from "../../description/Description"
 import styles from "./Shop.module.scss"
 
-const Data = [
-	{
-		id: 1,
-		imgSrc: "/img/models/1.png",
-		title: "Футболка USA",
-		category: "Пальто",
-		price: 229,
-		discountPrice: 129,
-
-	},
-	{
-		id: 2,
-		imgSrc: "/img/models/2.png",
-		title: "Купальник Glow",
-		category: "Кардиганы",
-		price: 129,
-	},
-	{
-		id: 3,
-		imgSrc: "/img/models/3.png",
-		title: "Свитшот Sweet Shot",
-		category: "Свитшоты",
-		price: 129,
-	},
-	{
-		id: 4,
-		imgSrc: "/img/models/1.png",
-		title: "Футболка USA",
-		category: "Пальто",
-		price: 129,
-
-	},
-	{
-		id: 5,
-		imgSrc: "/img/models/2.png",
-		title: "Купальник Glow",
-		category: "Толстовки",
-		price: 129,
-	},
-	{
-		id: 6,
-		imgSrc: "/img/models/3.png",
-		title: "Свитшот Sweet Shot",
-		category: "Свитшоты",
-		price: 129,
-	},
-	{
-		id: 7,
-		imgSrc: "/img/models/1.png",
-		title: "Футболка USA",
-		category: "Толстовки",
-		price: 129,
-
-	},
-	{
-		id: 8,
-		imgSrc: "/img/models/2.png",
-		title: "Купальник Glow",
-		category: "Толстовки",
-		price: 129,
-	},
-	{
-		id: 9,
-		imgSrc: "/img/models/3.png",
-		title: "Свитшот Sweet Shot",
-		category: "Толстовки",
-		price: 129,
-	},
-	{
-		id: 10,
-		imgSrc: "/img/models/1.png",
-		title: "Футболка USA",
-		category: "Пальто",
-		price: 129,
-
-	},
-	{
-		id: 11,
-		imgSrc: "/img/models/2.png",
-		title: "Купальник Glow",
-		category: "Кардиганы",
-		price: 129,
-	},
-	{
-		id: 12,
-		imgSrc: "/img/models/3.png",
-		title: "Свитшот Sweet Shot",
-		category: "Свитшоты",
-		price: 129,
-	},
-]
-
 
 const Shop = () => {
-	const { setDesc } = useContext(AppContext)
-	const [filtered, setFiltered] = useState(Data)
+	const { setDesc, filtered, setFiltered, Data } = useContext(AppContext)
 	const menuItems = [...new Set(Data.map((Val) => Val.category))];
 
+	const [currentItems, setCurrentItems] = useState([...filtered]);
+	const [pageCount, setPageCount] = useState(0);
+	const [itemOffset, setItemOffset] = useState(0);
+	const itemsPerPage = 9;
 
-	// вообще не понимаю, как я так в 12 ночи сделал фильтр на кнопки
+	useEffect(() => {
+		setDesc("Магазин")
+		const endOffset = itemOffset + itemsPerPage;
+		setCurrentItems(filtered.slice(itemOffset, endOffset));
+		setPageCount(Math.ceil(filtered.length / itemsPerPage));
+	}, [itemOffset, itemsPerPage, filtered]);
+
+	const handlePageClick = (event) => {
+		const newOffset = (event.selected * itemsPerPage) % filtered.length;
+
+		setItemOffset(newOffset);
+	};
+
 	function filteredItems(props) {
 		const filteredItem = Data.filter(item =>
 			item.category === props
 		)
 		return setFiltered(filteredItem)
 	}
-
-	useEffect(() => {
-
-		setDesc("Магазин")
-	}, [])
 
 	return (
 		<div className={styles.shop}>
@@ -145,6 +64,7 @@ const Shop = () => {
 						onClick={() => {
 							(filteredItems(item)
 							)
+							setItemOffset(0)
 						}}
 
 					>
@@ -152,16 +72,38 @@ const Shop = () => {
 					</button>
 				)}
 			</div>
-			<p>Показано {filtered.length} из {Data.length}</p>
+			<p>Показано {currentItems.length} из {filtered.length}</p>
 			<div className={styles.cards}>
 
-				{filtered.map((item) =>
+				{currentItems.map((item) =>
 				(<Card
 					key={item.id}
 					{...item}
 				/>
 				))}
 			</div>
+
+			<p>Показано {currentItems.length} из {filtered.length}</p>
+			<ReactPaginate
+				breakLabel="..."
+				nextLabel={<svg width="20" height="10" viewBox="0 0 21 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M-2.18557e-07 5.5L20 5.5M20 5.5L14.8649 10.5M20 5.5L14.8649 0.499999" stroke="black" />
+				</svg>}
+				onPageChange={handlePageClick}
+				pageRangeDisplayed={5}
+				pageCount={pageCount}
+				previousLabel={<svg width="21" height="11" viewBox="0 0 21 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M21 5.5L1 5.5M1 5.5L6.13514 0.5M1 5.5L6.13514 10.5" stroke="black" />
+				</svg>
+				}
+				renderOnZeroPageCount={null}
+				containerClassName={styles.pagination}
+				pageLinkClassName={styles.page}
+				previousLinkClassName={styles.pagePrev}
+				nextLinkClassName={styles.pageNext}
+				activeLinkClassName={styles.active}
+				disabledClassName={styles.disabled}
+			/>
 		</div>
 	)
 }

@@ -1,21 +1,22 @@
 @import "../../../styles/_mixins";
 
 .shop {
-
-	.catalogBtn {
-		@include blackButton;
-		
-	}
-	.active {
-		color: #fff;
-	background-color:#000;
-	}
 	.catalog {
 		margin-bottom: 92px;
 		button:not(:last-child) {
 			margin-right: 10px;
 		}
+		&Btn {
+			@include blackButton;
+			
+		}
 	}
+	
+	.active {
+		color: #fff;
+		background-color:#000;
+	}
+	
 	p {
 		margin-bottom: 65px;
 		color: #808080;
@@ -25,5 +26,41 @@
 		justify-content: space-between;
 		margin-bottom: 65px;
 		flex-wrap: wrap;
+	}
+
+	.pagination {
+		@include _normalText;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		list-style: none;
+
+		.page {
+			@include blackButton;
+			padding: 9px 16.5px 8px;
+			margin-right: 14px;
+
+			&Prev {
+				margin-right: 14px;
+			}
+
+			&Prev, &Next {
+				&:hover {
+					cursor: pointer;
+					svg {
+						path {
+							stroke: #858585;
+						}
+					}
+				}
+			}
+		}
+		.disabled {
+			display: none;
+		}
+		.active {
+			color: #fff;
+			background-color:#000;
+		}
 	}
 }
