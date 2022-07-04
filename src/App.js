@@ -107,6 +107,14 @@ function App() {
 	const [category, setCategory] = useState("")
 	const [filtered, setFiltered] = useState(Data)
 
+	const menuItems = [...new Set(Data.map((Val) => Val.category))];
+
+	function filteredItems(props) {
+		const filteredItem = Data.filter(item =>
+			item.category === props
+		)
+		return setFiltered(filteredItem)
+	}
 
 	return (
 		<AppContext.Provider value={{
@@ -115,8 +123,8 @@ function App() {
 			desc, setDesc,
 			setCategory,
 			filtered, setFiltered,
-			Data,
-
+			Data, menuItems,
+			filteredItems,
 		}}>
 			{popupCall && <Popup />}
 			<div className="container">

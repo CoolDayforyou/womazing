@@ -8,8 +8,12 @@ import styles from "./Shop.module.scss"
 
 
 const Shop = () => {
-	const { setDesc, filtered, setFiltered, Data } = useContext(AppContext)
-	const menuItems = [...new Set(Data.map((Val) => Val.category))];
+	const { setDesc,
+		filtered, setFiltered,
+		Data, menuItems,
+		filteredItems,
+	} = useContext(AppContext)
+
 
 	const [currentItems, setCurrentItems] = useState([...filtered]);
 	const [pageCount, setPageCount] = useState(0);
@@ -29,12 +33,6 @@ const Shop = () => {
 		setItemOffset(newOffset);
 	};
 
-	function filteredItems(props) {
-		const filteredItem = Data.filter(item =>
-			item.category === props
-		)
-		return setFiltered(filteredItem)
-	}
 
 	return (
 		<div className={styles.shop}>

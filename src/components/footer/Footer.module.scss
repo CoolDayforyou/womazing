@@ -65,27 +65,26 @@ footer {
 
 		.centerSide {
 			position: relative;
-			ul {
+			width: 400px;
+			.mainPages {
 				display: flex;
+				justify-content: space-between;
 			}
 			li{
-				margin-right: 30px;
-				&::marker{
-					content: "";
-					}
-
-				ul {
-					margin-top: 39px;
-					display: flex;
-					flex-direction: column;
-					li {
-						margin: 0 0 10px;
-					}
-				}
+				list-style: none;
 			}
 		
 			li a:hover{ 
 				color: $_firstColor;
+			}
+
+			.shopCategories {
+				margin: 39px 0 0 103px;
+				display: flex;
+				flex-direction: column;
+				li {
+					margin: 0 0 10px;
+				}
 			}
 		}
 

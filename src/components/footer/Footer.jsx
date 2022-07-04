@@ -1,9 +1,12 @@
 import React from "react"
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import AppContext from "../../context"
 
 import styles from "./Footer.module.scss"
 
 const Footer = () => {
+	const { menuItems, filteredItems } = useContext(AppContext)
 	return (
 		<footer>
 			<div className={styles.container}>
@@ -19,19 +22,26 @@ const Footer = () => {
 					</div>
 				</div>
 				<div className={styles.centerSide}>
-					<ul>
+					<ul className={styles.mainPages}>
 						<li> <Link to="/">Главная</Link></li>
 						<li>
 							<Link to="/shop">Магазин</Link>
-							<ul>
-								<li><a href="#">Пальто</a></li>
-								<li><a href="#">Свитшоты</a></li>
-								<li><a href="#">Кардиганы</a></li>
-								<li><a href="#">Толстовки</a></li>
-							</ul>
+
 						</li>
 						<li><a href="#">О бренде</a></li>
 						<li><a href="#">Контакты</a></li>
+					</ul>
+					<ul className={styles.shopCategories}>
+						{menuItems.map((item) =>
+						(<li>
+							<Link to="/shop"
+								onClick={() => {
+									(filteredItems(item)
+									)
+								}}
+							>{item}</Link>
+						</li>)
+						)}
 					</ul>
 				</div>
 				<div className={styles.rightSide}>
