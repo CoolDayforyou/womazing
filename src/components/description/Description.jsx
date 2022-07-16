@@ -3,101 +3,101 @@ import AppContext from "../../context"
 import styles from "./Description.module.scss"
 
 import { Link } from "react-router-dom"
+import {
+	MAIN_ROUTE, SHOP_ROUTE,
+	BRAND_ROUTE, CONTACTS_ROUTE,
+	ITEM_ROUTE, BASKET_ROUTE,
+	ORDER_ROUTE
+} from "../../utils/consts"
 
-const Description = () => {
-	const { desc } = useContext(AppContext)
+const Description = ({ category = null }) => {
+	const { desc, setDesc, currentItem } = useContext(AppContext)
 	return (
 		<div className={
-			desc.includes("Свитшот", "Пальто", "Кардиган", "Толстовка")
+			category
 				? styles.itemDescription
 				: styles.description
 		}>
 			{(() => {
 				switch (desc) {
-					case "Магазин":
+					case SHOP_ROUTE:
+						return (
+							category
+								? <>
+									<h1>{currentItem.title}</h1>
+									<Link to={MAIN_ROUTE}
+										onClick={() => setDesc(MAIN_ROUTE)}
+									>Главная</Link>
+									<Link to={SHOP_ROUTE}
+										onClick={() => setDesc(SHOP_ROUTE)}
+									>{currentItem.category}</Link>
+									<a>{currentItem.title}</a>
+								</>
+								: <>
+									<h1>Магазин</h1>
+									<Link to={MAIN_ROUTE}
+										onClick={() => setDesc(MAIN_ROUTE)}
+									>Главная</Link>
+									<a>Магазин</a>
+								</>
+						)
+					case BRAND_ROUTE:
 						return (
 							<>
-								<h1>Магазин</h1>
-								<Link to="/">Главная </Link>
-								<a> Магазин</a>
+								<h1>О бренде</h1>
+								<Link to={MAIN_ROUTE}
+									onClick={() => setDesc(MAIN_ROUTE)}
+								>Главная</Link>
+								<a>О бренде</a>
 							</>
 						)
-					case "Пальто":
+					case CONTACTS_ROUTE:
 						return (
 							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
+								<h1>Контакты</h1>
+								<Link to={MAIN_ROUTE}
+									onClick={() => setDesc(MAIN_ROUTE)}
+								>Главная</Link>
+								<a>Контакты</a>
 							</>
 						)
-					case "Свитшот":
+					case BASKET_ROUTE:
 						return (
 							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
+								<h1>Корзина</h1>
+								<Link to={MAIN_ROUTE}
+									onClick={() => setDesc(MAIN_ROUTE)}
+								>Главная</Link>
+								<a> Корзина</a>
 							</>
 						)
-					case "Кардиган":
+					case ORDER_ROUTE:
 						return (
 							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
+								<h1>Оформление заказа</h1>
+								<Link to={MAIN_ROUTE}
+									onClick={() => setDesc(MAIN_ROUTE)}
+								>Главная</Link>
+								<a>Оформление заказа</a>
 							</>
 						)
-					case "Толстовка":
+					case "Получено":
 						return (
 							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
-							</>
-						)
-					case "О бренде":
-						return (
-							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
-							</>
-						)
-					case "Контакты":
-						return (
-							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
-							</>
-						)
-					case "Корзина":
-						return (
-							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
-							</>
-						)
-					case "Оформление заказа":
-						return (
-							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
-							</>
-						)
-					case "Заказ получен":
-						return (
-							<>
-								<h1>Магазин</h1>
-								<a>Главная </a>
-								<a> Магазин</a>
+								<h1>Заказ получен</h1>
+								<Link to={MAIN_ROUTE}
+									onClick={() => setDesc(MAIN_ROUTE)}
+								>Главная</Link>
+								<a>Оформление заказа</a>
+								<a>Заказ получен</a>
 							</>
 						)
 					default:
 						return null
 				}
 			})()}
+
+
 		</div>
 	)
 }

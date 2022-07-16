@@ -42,7 +42,7 @@ footer {
 				letter-spacing: 0.1em;
 				text-transform: uppercase;
 				margin-bottom: 70px;
-				img {
+				svg {
 					margin-right: 11px;
 				}
 			}
@@ -66,6 +66,9 @@ footer {
 		.centerSide {
 			position: relative;
 			width: 400px;
+			.active {
+				color: $_firstColor;
+			}
 			.mainPages {
 				display: flex;
 				justify-content: space-between;

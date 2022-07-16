@@ -6,12 +6,14 @@
 	align-items: center;
 	margin-top: 54px;
 	@include _normalText;
-	
+	.active {
+		color: $_firstColor;
+	}
 	&Logo {
 		display: flex;
 		align-items: center;
 		text-transform: uppercase;
-		img {
+		svg {
 			margin-right: 11px;
 		}
 	}

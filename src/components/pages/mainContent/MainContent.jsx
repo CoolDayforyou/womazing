@@ -5,6 +5,9 @@ import TeamSlider from "../../sliders/TeamSlider"
 import { Link } from "react-router-dom"
 
 import styles from "./MainContext.module.scss"
+import { SHOP_ROUTE } from "../../../utils/consts"
+import { useContext } from "react"
+import AppContext from "../../../context"
 
 const items = [
 	{
@@ -51,22 +54,25 @@ const triggers = [
 ]
 
 const MainContent = () => {
+	const { Data } = useContext(AppContext)
 	return (
 		<>
 			<HeaderSlider />
 			<div className={styles.collection}>
 				<h2>Новая коллекция</h2>
 				<div className={styles.cards}>
-
-					{items.map(item => (
-						<Card
+					{ }
+					{Data.map((item) =>
+						item.id <= 3 &&
+						(<Card
+							parentId={item.id}
 							key={item.id}
 							{...item}
-						/>
-					)
+						/>)
+
 					)}
 				</div>
-				<Link to="/shop" className={styles.toShop}> Открыть магазин</Link>
+				<Link to={SHOP_ROUTE} className={styles.toShop}> Открыть магазин</Link>
 
 			</div>
 			<div className={styles.important}>

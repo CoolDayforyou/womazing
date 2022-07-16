@@ -14,13 +14,15 @@
 	}
 	a {
 		cursor: pointer;
+		color: inherit;
 		&:last-child {
 			color: #909090;
+			cursor: auto;
 		}
 		&:not(:last-child):after {
 			cursor: auto;
-				content: "\2014";
-			
+			content: "\2014";
+			margin: 0 13px;
 		}
 	}
 }

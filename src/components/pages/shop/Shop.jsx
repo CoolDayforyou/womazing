@@ -1,40 +1,42 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import ReactPaginate from 'react-paginate'
 
 import AppContext from "../../../context"
+import { SHOP_ROUTE } from "../../../utils/consts"
 import Card from "../../card/Card"
 import Description from "../../description/Description"
 import styles from "./Shop.module.scss"
 
 
 const Shop = () => {
-	const { setDesc,
+	const { setDesc } = useContext(AppContext)
+
+
+	const {
 		filtered, setFiltered,
 		Data, menuItems,
 		filteredItems,
+		currentShopItems, setCurrentShopItems,
+		pageCount, setPageCount,
+		itemOffset, setItemOffset,
+		itemsPerPage,
 	} = useContext(AppContext)
 
-
-	const [currentItems, setCurrentItems] = useState([...filtered]);
-	const [pageCount, setPageCount] = useState(0);
-	const [itemOffset, setItemOffset] = useState(0);
-	const itemsPerPage = 9;
-
 	useEffect(() => {
-		setDesc("Магазин")
+		setDesc(SHOP_ROUTE)
 		const endOffset = itemOffset + itemsPerPage;
-		setCurrentItems(filtered.slice(itemOffset, endOffset));
+		setCurrentShopItems(filtered.slice(itemOffset, endOffset));
 		setPageCount(Math.ceil(filtered.length / itemsPerPage));
 	}, [itemOffset, itemsPerPage, filtered]);
 
 	const handlePageClick = (event) => {
 		const newOffset = (event.selected * itemsPerPage) % filtered.length;
-
 		setItemOffset(newOffset);
 	};
 
 
 	return (
+
 		<div className={styles.shop}>
 			<Description />
 			<div className={styles.catalog}>
@@ -70,10 +72,9 @@ const Shop = () => {
 					</button>
 				)}
 			</div>
-			<p>Показано {currentItems.length} из {filtered.length}</p>
+			<p>Показано {currentShopItems.length} из {filtered.length}</p>
 			<div className={styles.cards}>
-
-				{currentItems.map((item) =>
+				{currentShopItems.map((item) =>
 				(<Card
 					key={item.id}
 					{...item}
@@ -81,7 +82,7 @@ const Shop = () => {
 				))}
 			</div>
 
-			<p>Показано {currentItems.length} из {filtered.length}</p>
+			<p>Показано {currentShopItems.length} из {filtered.length}</p>
 			<ReactPaginate
 				breakLabel="..."
 				nextLabel={<svg width="20" height="10" viewBox="0 0 21 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,6 +102,7 @@ const Shop = () => {
 				nextLinkClassName={styles.pageNext}
 				activeLinkClassName={styles.active}
 				disabledClassName={styles.disabled}
+				breakLinkClassName={styles.break}
 			/>
 		</div>
 	)

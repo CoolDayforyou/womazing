@@ -1,0 +1,36 @@
+@import "../../../styles/_mixins.scss";
+
+.brand {
+	display: flex;
+	flex-direction: column;
+	h3 {
+		margin-bottom: 46px;
+	}
+	p:not(:last-child) {
+		margin-bottom: 27px;
+	}
+ .ideaAndWoman, .magicInDetails {
+	margin-bottom: 130px;
+ }
+
+	.ideaAndWoman {
+		display: flex;
+		align-items: center;
+		img {
+			margin-right: 94px;
+		}
+	}
+	.magicInDetails {
+		display: flex;
+		.description {
+			margin-right: 123px;
+		}
+	}
+	button {
+		align-self: center;
+		@include darkButton;
+		a {
+			color: inherit;
+		}
+	}
+}
