@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
 import AppContext from '../../../context'
@@ -6,19 +6,21 @@ import { SHOP_ROUTE } from '../../../utils/consts'
 import Card from '../../card/Card'
 import Description from '../../description/Description'
 import styles from './Item.module.scss'
-// ww350 h558
+
 const Item = () => {
+	const [size, setSize] = useState(null)
+	const [amount, setAmount] = useState(1)
+
 	const {
 		setDesc, currentItem,
-		size, setSize,
+		basket, setBasket,
 		color, setColor,
 		sizes, colors,
-		amount, setAmount,
 		Data
 	} = useContext(AppContext)
 	useEffect(() => {
 		setDesc(SHOP_ROUTE)
-	}, [])
+	}, [color, size, amount])
 	const same = Data.filter(item =>
 		item.category === currentItem.category && item.id !== currentItem.parentId)
 	return (
@@ -74,7 +76,35 @@ const Item = () => {
 							value={amount}
 							onChange={event => setAmount(event.target.value)}
 						/>
-						<button>Добавить в корзину</button>
+						<button
+							onClick={() => {
+								if (size !== null && color !== null) {
+									currentItem.discountPrice
+										? setBasket([...basket, {
+											img: currentItem.imgSrc,
+											title: currentItem.title,
+											price: currentItem.discountPrice,
+											size: size,
+											color: color,
+											amount: amount,
+											total: currentItem.discountPrice.replace(/[^0-9,.]/g, "") * amount
+										}])
+										: setBasket([...basket, {
+											img: currentItem.imgSrc,
+											title: currentItem.title,
+											price: currentItem.price,
+											size: size,
+											color: color,
+											amount: amount,
+											total: currentItem.price.replace(/[^0-9,.]/g, "") * amount
+										}])
+									setSize(null)
+									setAmount(1)
+								} else {
+									alert("Выберите все предоставленные параметры для заказа.")
+								}
+							}}
+						>Добавить в корзину</button>
 					</div>
 				</div>
 			</div>

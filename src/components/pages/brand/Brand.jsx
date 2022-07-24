@@ -23,11 +23,9 @@ const Brand = () => {
 				</div>
 				<img src="/img/brand/2.png" alt="Идея и женщина" />
 			</div>
-			<button>
-				<Link to="/shop">
-					Перейти в магазин
-				</Link>
-			</button>
+			<Link className={styles.toShop} to="/shop">
+				Перейти в магазин
+			</Link>
 		</div>
 	)
 }

@@ -26,11 +26,9 @@
 			margin-right: 123px;
 		}
 	}
-	button {
-		align-self: center;
-		@include darkButton;
-		a {
-			color: inherit;
+		.toShop {
+			align-self: center;
+			@include darkButton;
 		}
-	}
+	
 }

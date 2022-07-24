@@ -18,6 +18,7 @@ import {
 	BASKET_ROUTE
 } from "./utils/consts"
 import Item from "./components/pages/item/Item";
+import Basket from "./components/pages/basket/Basket";
 
 const Data = [
 	{
@@ -893,9 +894,12 @@ const App = () => {
 	const [currentShopItems, setCurrentShopItems] = useState([...filtered]);
 	const [pageCount, setPageCount] = useState(0);
 	const [itemOffset, setItemOffset] = useState(0);
-	const [size, setSize] = useState(null)
 	const [color, setColor] = useState(null)
-	const [amount, setAmount] = useState(1)
+	const [basket, setBasket] = useState([
+		{ img: '/img/models/1.png', title: 'Футболка USA', price: '$129', size: 'S', color: 'light-pink', amount: 1, total: 129 },
+		{ img: '/img/models/2.png', title: 'Купальник Glow', price: '$229', size: 'L', color: 'light-gray', amount: 10, total: 2290 },
+		{ img: '/img/models/3.png', title: 'Свитшот Sweet Shot', price: '$229', size: 'S', color: 'light-pink', amount: 1, total: 229 }
+	])
 
 	const itemsPerPage = 9;
 
@@ -921,9 +925,8 @@ const App = () => {
 			currentShopItems, setCurrentShopItems,
 			pageCount, setPageCount,
 			itemOffset, setItemOffset,
-			size, setSize,
-			amount, setAmount,
 			color, setColor,
+			basket, setBasket,
 			colors,
 			itemsPerPage,
 		}}>
@@ -933,9 +936,10 @@ const App = () => {
 				<Routes>
 					<Route path={MAIN_ROUTE} element={<MainContent />} />
 					<Route path={SHOP_ROUTE} element={<Shop />} />
+					<Route path={SHOP_ROUTE + "/:id"} element={<Item />} />
 					<Route path={BRAND_ROUTE} element={<Brand />} />
 					<Route path={CONTACTS_ROUTE} element={<Contacts />} />
-					<Route path={SHOP_ROUTE + "/:id"} element={<Item />} />
+					<Route path={BASKET_ROUTE} element={<Basket />} />
 
 				</Routes>
 			</div>

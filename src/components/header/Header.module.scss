@@ -66,10 +66,26 @@
 	}
 
 	.cart {
+		position: relative;
 		width: 24px;
 		height: 24px;
 		img:hover {
 			cursor: pointer;
+		}
+		p {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			color: white;
+			background-color: $_secondColor;
+			position: absolute;
+			top: -11px;
+			right: -11px;
+			font-size: 10px;
+			font-weight: 400;
+			line-height: 100%;
+			text-align: center;
+			letter-spacing: 0.02em;
 		}
 	}
 }

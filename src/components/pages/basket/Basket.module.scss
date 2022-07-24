@@ -1,0 +1,112 @@
+@import "../../../styles/_mixins.scss";
+
+.basket {
+
+	.legend {
+		display: flex;
+		padding-bottom: 26px;
+		margin-bottom: 49px;
+		border-bottom: 1px solid #ccc;
+		h4 {
+			@include _h4;
+			&:first-child {
+				margin-right: 416px;
+			}
+			&:nth-child(2) {
+				margin-right: 139px;
+			}
+			&:nth-child(3) {
+				margin-right: 167px;
+			}
+		}
+	}
+
+	&Item {
+		display: flex;
+		align-items: center;
+		width: 989px;
+		margin-bottom: 72px;
+		.delete {
+			background-color: #fff;
+			margin-right: 45px;
+			cursor: pointer;
+		}
+		.itemImg {
+			width: 125px;
+			margin-right: 36px;
+		}
+		.priceBlock {
+			display: flex;
+			width: 514px;
+			align-items: center;
+			margin-left: auto;
+		}
+		
+		.price {
+			margin-right: 151px;
+		}
+
+		input {
+			width: 47px;
+			height: 47px;
+			margin-right: auto;
+			box-sizing: border-box;
+			border: 1px solid #AFAFAF;
+			text-align: center;
+			@include _largeText;
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+	.coupon {
+		display: flex;
+		input {
+			width: 255px;
+			margin-right: 16px;
+			border-bottom: 1px solid #000;
+
+		}
+		button {
+			@include liteButton;
+		}
+		.reload {
+			margin-left: auto;
+		}
+	}
+
+	.finalPrice {
+		width: 538px;
+		margin-left: auto;
+		margin-top: 88px;
+		.subtotal {
+			display: flex;
+			&Price {
+				margin-left: 20px;
+			}
+		}
+		.checkout {
+			display: flex;
+			margin-top: 28px;
+			.total {
+				display: flex;
+				width: 287px;
+				height: 68px;
+				box-sizing: border-box;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0 51px 0 31px ;
+				margin-right: 15px;
+				background-color: #F1EADC;
+			}
+			button {
+				@include darkButton;
+			}
+		}
+	}
+}

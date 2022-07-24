@@ -1,11 +1,14 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import AppContext from "../../context";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
+import { BASKET_ROUTE } from "../../utils/consts";
 
 const Header = () => {
-	const { setPopupCall, mainPages,
-		desc, setDesc
+	const {
+		setPopupCall, mainPages,
+		desc, setDesc,
+		basket
 	} = useContext(AppContext)
 
 	return (
@@ -58,9 +61,12 @@ const Header = () => {
 				</svg>
 				<a href="tel:+74958235412">+7 (495) 823-54-12</a>
 			</div>
-			<a href="#" className={styles.cart}>
+			<Link to={BASKET_ROUTE}
+				onClick={() => setDesc(BASKET_ROUTE)}
+				className={styles.cart}>
+				{basket.length > 0 && <p>{basket.length}</p>}
 				<img src="/img/cart.svg" alt="Cart" />
-			</a>
+			</Link>
 		</nav>
 	)
 }
