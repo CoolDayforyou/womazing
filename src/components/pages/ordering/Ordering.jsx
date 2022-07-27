@@ -25,7 +25,7 @@ const Ordering = () => {
 		setDesc(ORDER_ROUTE)
 	}, [])
 
-	const totalPrices = [...new Set(basket.map((Val) => Val.total))];
+	const totalPrices = [...basket.map((Val) => Val.total)];
 	const [orderInfo, setOrderInfo] = useState(orderInfoValues);
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;

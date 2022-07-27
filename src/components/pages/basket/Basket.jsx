@@ -13,7 +13,9 @@ const Basket = () => {
 	useEffect(() => {
 		setDesc(BASKET_ROUTE)
 	}, [])
-	const totalPrices = [...new Set(basket.map((Val) => Val.total))];
+	const totalPrices = [...basket.map((Val) => Val.total)];
+	console.log(basket);
+	console.log(totalPrices);
 	return (
 		<>
 			<Description />
