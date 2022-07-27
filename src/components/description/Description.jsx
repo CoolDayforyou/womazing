@@ -6,12 +6,11 @@ import { Link } from "react-router-dom"
 import {
 	MAIN_ROUTE, SHOP_ROUTE,
 	BRAND_ROUTE, CONTACTS_ROUTE,
-	ITEM_ROUTE, BASKET_ROUTE,
-	ORDER_ROUTE
+	BASKET_ROUTE, ORDER_ROUTE
 } from "../../utils/consts"
 
 const Description = ({ category = null }) => {
-	const { desc, setDesc, currentItem } = useContext(AppContext)
+	const { desc, setDesc, currentItem, sendOrder } = useContext(AppContext)
 	return (
 		<div className={
 			category
@@ -73,25 +72,24 @@ const Description = ({ category = null }) => {
 						)
 					case ORDER_ROUTE:
 						return (
-							<>
-								<h1>Оформление заказа</h1>
-								<Link to={MAIN_ROUTE}
-									onClick={() => setDesc(MAIN_ROUTE)}
-								>Главная</Link>
-								<a>Оформление заказа</a>
-							</>
+							sendOrder
+								? <>
+									<h1>Заказ получен</h1>
+									<Link to={MAIN_ROUTE}
+										onClick={() => setDesc(MAIN_ROUTE)}
+									>Главная</Link>
+									<a>Оформление заказа</a>
+									<a>Заказ получен</a>
+								</>
+								: <>
+									<h1>Оформление заказа</h1>
+									<Link to={MAIN_ROUTE}
+										onClick={() => setDesc(MAIN_ROUTE)}
+									>Главная</Link>
+									<a>Оформление заказа</a>
+								</>
 						)
-					case "Получено":
-						return (
-							<>
-								<h1>Заказ получен</h1>
-								<Link to={MAIN_ROUTE}
-									onClick={() => setDesc(MAIN_ROUTE)}
-								>Главная</Link>
-								<a>Оформление заказа</a>
-								<a>Заказ получен</a>
-							</>
-						)
+
 					default:
 						return null
 				}

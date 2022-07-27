@@ -1,16 +1,18 @@
 import styles from "./Contacts.module.scss";
 
 import { Map } from "../../map/Map";
-import { useJsApiLoader } from '@react-google-maps/api';
-import Description from '../../description/Description';
-import { useState } from "react";
+import { useJsApiLoader } from "@react-google-maps/api";
+import Description from "../../description/Description";
+import { useContext, useEffect, useState } from "react";
+import AppContext from "../../../context";
+import { CONTACTS_ROUTE } from "../../../utils/consts";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const defaultCenter = {
 	lat: 55.68816924645657,
 	lng: 37.53203885987798
 };
 
-const userInfoValues ={
+const userInfoValues = {
 	name: "",
 	mail: "",
 	phone: "",
@@ -18,8 +20,13 @@ const userInfoValues ={
 }
 
 const Contacts = () => {
+	const { setDesc
+	} = useContext(AppContext)
+	useEffect(() => {
+		setDesc(CONTACTS_ROUTE)
+	}, [])
 	const { isLoaded } = useJsApiLoader({
-		id: 'google-map-script',
+		id: "google-map-script",
 		googleMapsApiKey: API_KEY
 	})
 
@@ -27,12 +34,12 @@ const Contacts = () => {
 	const [userInfo, setUserInfo] = useState(userInfoValues)
 
 	const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
-  };
+		const { name, value } = e.target;
+		setUserInfo({
+			...userInfo,
+			[name]: value,
+		});
+	};
 
 	return (
 		<div className={styles.contacts}>
@@ -60,31 +67,32 @@ const Contacts = () => {
 			<div className={styles.writeUs}>
 				<h3>Напишите нам</h3>
 				<input type="text"
-				name="name"  //! IMPORTANT
-				placeholder="Имя" 
-				onChange={handleInputChange} 
-				value={userInfo.name}
+					name="name"  //! IMPORTANT
+					placeholder="Имя"
+					onChange={handleInputChange}
+					value={userInfo.name}
 				/>
 				<input type="email"
-				name="mail"
-				placeholder="E-mail" 
-				onChange={handleInputChange}
-				value={userInfo.mail}
+					name="mail"
+					placeholder="E-mail"
+					onChange={handleInputChange}
+					value={userInfo.mail}
 				/>
 				<input type="tel"
-				name="phone"
-				placeholder="Телефон" 
-				onChange={handleInputChange}
-				value={userInfo.phone}
+					name="phone"
+					placeholder="Телефон"
+					onChange={handleInputChange}
+					value={userInfo.phone}
 				/>
 				<textarea placeholder="Сообщение"
-				name="message"
-				onChange={handleInputChange}
-				value={userInfo.message}
+					name="message"
+					onChange={handleInputChange}
+					value={userInfo.message}
 				/>
 				<button
-					onClick={() => {(setAddedMessage(!addedMessage))
-						
+					onClick={() => {
+						(setAddedMessage(!addedMessage))
+
 					}}
 				>Отправить</button>
 				{addedMessage

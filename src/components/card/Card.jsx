@@ -2,7 +2,7 @@ import React from "react"
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import AppContext from "../../context"
-import { ITEM_ROUTE, SHOP_ROUTE } from "../../utils/consts"
+import { SHOP_ROUTE } from "../../utils/consts"
 import styles from "./Card.module.scss"
 
 

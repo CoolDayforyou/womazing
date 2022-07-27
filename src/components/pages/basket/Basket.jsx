@@ -1,13 +1,18 @@
-import React from 'react'
-import { useContext } from 'react'
-import AppContext from '../../../context'
-import Description from '../../description/Description'
-import styles from './Basket.module.scss'
+import React, { useEffect } from "react"
+import { useContext } from "react"
+import { Link } from "react-router-dom"
+import AppContext from "../../../context"
+import { BASKET_ROUTE, ORDER_ROUTE } from "../../../utils/consts"
+import Description from "../../description/Description"
+import styles from "./Basket.module.scss"
 
 const Basket = () => {
 	const {
-		basket, setBasket
+		basket, setBasket, setDesc, setSendOrder
 	} = useContext(AppContext)
+	useEffect(() => {
+		setDesc(BASKET_ROUTE)
+	}, [])
 	const totalPrices = [...new Set(basket.map((Val) => Val.total))];
 	return (
 		<>
@@ -49,7 +54,7 @@ const Basket = () => {
 				</div>)
 				)}
 				<div className={styles.coupon}>
-					<input type="text" placeholder='Введите купон' />
+					<input type="text" placeholder="Введите купон" />
 					<button>Применить купон</button>
 					<button className={styles.reload}
 					//? непонятно, что именно должно делаться при нажатии. Либо обновлять после введения купона, либо при изменении количества (что с реактом делается автоматически). Поэтому без логики
@@ -74,7 +79,16 @@ const Basket = () => {
 								: totalPrices.reduce((total, amount) => total + amount)
 							}</h3>
 						</div>
-						<button>Оформить заказ</button>
+						<Link to={
+							basket.length !== 0
+								? ORDER_ROUTE
+								: ""
+						}
+							className={basket.length === 0
+								? styles.disabled
+								: ""}
+							onClick={() => setSendOrder(false)}
+						>Оформить заказ</Link>
 					</div>
 				</div>
 			</div>

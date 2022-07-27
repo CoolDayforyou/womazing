@@ -1,10 +1,10 @@
-import { GoogleMap } from '@react-google-maps/api';
-import { useCallback, useRef } from 'react';
+import { GoogleMap } from "@react-google-maps/api";
+import { useCallback, useRef } from "react";
 import styles from "./Map.module.scss"
 
 const containerStyle = {
-	width: '100%',
-	height: '100%'
+	width: "100%",
+	height: "100%"
 };
 
 

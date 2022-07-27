@@ -42,9 +42,7 @@ const Footer = () => {
 									: ""
 								}
 							>
-								<Link to={item.link}
-									onClick={() => setDesc(item.link)}
-								>
+								<Link to={item.link}>
 									{item.page}
 								</Link>
 							</li>

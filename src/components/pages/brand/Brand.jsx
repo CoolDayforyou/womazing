@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom';
-import Description from '../../description/Description';
+import { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import AppContext from "../../../context";
+import { BRAND_ROUTE } from "../../../utils/consts";
+import Description from "../../description/Description";
 import styles from "./Brand.module.scss"
 
 const Brand = () => {
-
+	const { setDesc
+	} = useContext(AppContext)
+	useEffect(() => {
+		setDesc(BRAND_ROUTE)
+	}, [])
 	return (
 		<div className={styles.brand}>
 			<Description />

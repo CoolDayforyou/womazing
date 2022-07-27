@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { useContext } from 'react'
-import { useEffect } from 'react'
-import AppContext from '../../../context'
-import { SHOP_ROUTE } from '../../../utils/consts'
-import Card from '../../card/Card'
-import Description from '../../description/Description'
-import styles from './Item.module.scss'
+import React, { useState } from "react"
+import { useContext } from "react"
+import { useEffect } from "react"
+import AppContext from "../../../context"
+import { SHOP_ROUTE } from "../../../utils/consts"
+import Card from "../../card/Card"
+import Description from "../../description/Description"
+import styles from "./Item.module.scss"
 
 const Item = () => {
 	const [size, setSize] = useState(null)
@@ -49,7 +49,7 @@ const Item = () => {
 									className={
 										size === value.toUpperCase()
 											? styles.active
-											: ''}
+											: ""}
 									key={value}
 									onClick={() => setSize(value.toUpperCase())}
 								>{value.toUpperCase()}</button>

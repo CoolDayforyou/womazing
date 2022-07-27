@@ -1,0 +1,135 @@
+@import '../../../styles/_mixins.scss';
+
+.order {
+	display: flex;
+	
+	h3 {
+		margin-bottom: 47px;
+	}
+	h4 {
+		@include _h4;
+	}
+
+	.userData {
+		display: flex;
+		flex-direction: column;
+		height: 1072px;
+		justify-content: space-between;
+		margin-right: 313px;
+		
+		input {
+			::placeholder {
+				color: #868686;
+			}
+			width: 350px;
+			border-bottom: 1px solid #000;
+			padding-bottom: 16px;
+			margin-bottom: 35px;
+			&:focus {
+				outline: none;
+			}
+		}
+		textarea {
+			width: 350px;
+			height: 134px;
+			flex-grow: 1;
+			resize: none;
+			border-bottom: 1px solid #000;
+			overflow: hidden;
+			&:focus {
+				outline: none;
+			}
+		}
+		.contacts, .residence{
+			display: flex;
+			flex-direction: column;
+			
+		}
+	}
+	&Data {
+		width: 255px;
+		ul {
+			display: flex;
+			justify-content: space-between;
+			h4 {
+				margin-bottom: 30px;
+			}
+			li {
+				display: flex;
+				flex-direction: column;
+				&::marker{
+					content: "";
+				}
+				& > ul {
+					display: flex;
+					flex-direction: column;
+					li {
+						margin-bottom: 30px;
+					}
+					h4 {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.total {
+			display: flex;
+			justify-content: space-between;
+			background-color: #F1EADC;
+			margin-top: -15px;
+			margin-bottom: 145px;
+			padding: 15px 24px 14px 18px;
+		}
+		.paymentMethods {
+
+			input[type="radio"] {
+				display: none;
+			}
+			
+			input[type="radio"] + label {
+				display: flex;
+				align-items: center;
+				@include _normalText;
+				margin-bottom: 48px;
+				cursor: pointer;
+				&::before {
+					content: '';
+					display: inline-block;
+					width: 22px;
+					height: 22px;
+					margin-right: 14px;
+					
+					border: 1px solid black;
+				}
+				&::after {
+					content: '';
+					margin-left: 7.5px;
+				}
+			}
+			
+			input:checked + label::after {
+				display: inline-block;
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				background-color: #000;
+			}
+
+			button {
+				@include darkButton;
+			}
+		}
+	}
+}
+
+.ordered {
+	display: flex;
+	align-items: center;
+	img {
+		margin-right: 44px;
+	}
+	a {
+		@include liteButton;
+		margin-left: auto;
+	}
+}

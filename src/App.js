@@ -9,16 +9,18 @@ import AppContext from "./context"
 import { Route, Routes } from "react-router-dom";
 import Shop from "./components/pages/shop/Shop";
 import Contacts from "./components/pages/contacts/Contacts";
+import Item from "./components/pages/item/Item";
+import Basket from "./components/pages/basket/Basket";
+import Ordering from "./components/pages/ordering/Ordering";
 
 import {
 	MAIN_ROUTE,
 	SHOP_ROUTE,
 	BRAND_ROUTE,
 	CONTACTS_ROUTE,
-	BASKET_ROUTE
+	BASKET_ROUTE,
+	ORDER_ROUTE
 } from "./utils/consts"
-import Item from "./components/pages/item/Item";
-import Basket from "./components/pages/basket/Basket";
 
 const Data = [
 	{
@@ -895,11 +897,8 @@ const App = () => {
 	const [pageCount, setPageCount] = useState(0);
 	const [itemOffset, setItemOffset] = useState(0);
 	const [color, setColor] = useState(null)
-	const [basket, setBasket] = useState([
-		{ img: '/img/models/1.png', title: 'Футболка USA', price: '$129', size: 'S', color: 'light-pink', amount: 1, total: 129 },
-		{ img: '/img/models/2.png', title: 'Купальник Glow', price: '$229', size: 'L', color: 'light-gray', amount: 10, total: 2290 },
-		{ img: '/img/models/3.png', title: 'Свитшот Sweet Shot', price: '$229', size: 'S', color: 'light-pink', amount: 1, total: 229 }
-	])
+	const [basket, setBasket] = useState([])
+	const [sendOrder, setSendOrder] = useState(false)
 
 	const itemsPerPage = 9;
 
@@ -929,6 +928,7 @@ const App = () => {
 			basket, setBasket,
 			colors,
 			itemsPerPage,
+			sendOrder, setSendOrder
 		}}>
 			{popupCall && <Popup />}
 			<div className="container">
@@ -940,6 +940,7 @@ const App = () => {
 					<Route path={BRAND_ROUTE} element={<Brand />} />
 					<Route path={CONTACTS_ROUTE} element={<Contacts />} />
 					<Route path={BASKET_ROUTE} element={<Basket />} />
+					<Route path={ORDER_ROUTE} element={<Ordering />} />
 
 				</Routes>
 			</div>

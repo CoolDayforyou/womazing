@@ -1,7 +1,6 @@
-export const MAIN_ROUTE = '/'
-export const SHOP_ROUTE = '/shop'
-export const ITEM_ROUTE = SHOP_ROUTE + '/:id'
-export const BRAND_ROUTE = '/brand'
-export const CONTACTS_ROUTE = '/contacts'
-export const BASKET_ROUTE = '/basket'
-export const ORDER_ROUTE = '/order'
+export const MAIN_ROUTE = "/"
+export const SHOP_ROUTE = "/shop"
+export const BRAND_ROUTE = "/brand"
+export const CONTACTS_ROUTE = "/contacts"
+export const BASKET_ROUTE = "/basket"
+export const ORDER_ROUTE = "/order"

@@ -104,9 +104,13 @@
 				margin-right: 15px;
 				background-color: #F1EADC;
 			}
-			button {
+			a {
 				@include darkButton;
 			}
 		}
+	}
+	.disabled {
+		background-color: #ccc !important;
+		cursor: default !important;
 	}
 }

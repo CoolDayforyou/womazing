@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from "react-paginate"
 
 import AppContext from "../../../context"
 import { SHOP_ROUTE } from "../../../utils/consts"
