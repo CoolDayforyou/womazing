@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Card from "../../card/Card"
 import HeaderSlider from "../../sliders/HeaderSlider"
 import TeamSlider from "../../sliders/TeamSlider"
 import { Link } from "react-router-dom"
 
 import styles from "./MainContext.module.scss"
-import { SHOP_ROUTE } from "../../../utils/consts"
+import { MAIN_ROUTE, SHOP_ROUTE } from "../../../utils/consts"
 import { useContext } from "react"
 import AppContext from "../../../context"
 
@@ -54,7 +54,10 @@ const triggers = [
 ]
 
 const MainContent = () => {
-	const { Data } = useContext(AppContext)
+	const { Data, setDesc } = useContext(AppContext)
+	useEffect(() => {
+		setDesc(MAIN_ROUTE)
+	}, [])
 	return (
 		<>
 			<HeaderSlider />

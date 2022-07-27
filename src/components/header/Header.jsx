@@ -57,7 +57,7 @@ const Header = () => {
 						</clipPath>
 					</defs>
 				</svg>
-				<a href="tel:+74958235412">+7 (495) 823-54-12</a>
+				<a href="tel:+380123456789">+380 (123) 456-67-89</a>
 			</div>
 			<Link to={BASKET_ROUTE}
 				onClick={() => setDesc(BASKET_ROUTE)}

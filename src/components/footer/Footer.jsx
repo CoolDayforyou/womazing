@@ -72,7 +72,7 @@ const Footer = () => {
 				</div>
 				<div className={styles.rightSide}>
 					<div className={styles.contacts}>
-						<a href="tel:+74958235412">+7 (495) 823-54-12</a>
+						<a href="tel:+380123456789">+380 (123) 456-67-89</a>
 						<a href="mailto:hello@womazing.com">hello@womazing.com</a>
 					</div>
 					<div className={styles.socials}>

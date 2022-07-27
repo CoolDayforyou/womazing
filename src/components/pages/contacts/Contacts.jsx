@@ -8,10 +8,9 @@ import AppContext from "../../../context";
 import { CONTACTS_ROUTE } from "../../../utils/consts";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const defaultCenter = {
-	lat: 55.68816924645657,
-	lng: 37.53203885987798
+	lat: 48.50043547020171,
+	lng: 32.231482060799436
 };
-
 const userInfoValues = {
 	name: "",
 	mail: "",
@@ -51,7 +50,7 @@ const Contacts = () => {
 			<div className={styles.infoBlock}>
 				<div className={styles.phone}>
 					<p>Телефон</p>
-					<a href="tel:+74958235412">+7 (495) 823-54-12</a>
+					<a href="tel:+380123456789">+380 (123) 456-67-89</a>
 				</div>
 				<div className={styles.mail}>
 					<p>E-mail</p>
@@ -60,9 +59,9 @@ const Contacts = () => {
 				<div className={styles.address}>
 					<p>Адрес</p>
 					<a href="https://goo.gl/maps/GyxBbPSt7HSWauSm9" target="_blank">
-						г. Москва, 3-я улица Строителей, 25
+						Дендропарк Кропивницкий
 					</a>
-				</div>
+				</div> {/* немного изменил чтобы не рос. адрес */}
 			</div>
 			<div className={styles.writeUs}>
 				<h3>Напишите нам</h3>
